@@ -1,6 +1,7 @@
 {
   "devDependencies": {
-    "@angular/cli": "^19.1.6"
+    "@angular/cli": "^19.1.6",
+    "rimraf": "^6.0.1"
   },
   "name": "gif-app",
   "version": "1.0.0",
@@ -137,7 +138,6 @@
     "restore-cursor": "^5.1.0",
     "retry": "^0.12.0",
     "rfdc": "^1.4.1",
-    "rimraf": "^5.0.10",
     "rxjs": "^7.8.1",
     "safe-buffer": "^5.2.1",
     "safer-buffer": "^2.1.2",
@@ -187,7 +187,11 @@
     "yoctocolors-cjs": "^2.1.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "delete:docs": "rimraf ./docs",
+    "build:href": "ng build --base-href=/Gif-app/",
+    "copy:dist": "cp -R ./dist/gif-app/* ./docs/",
+    "build:github": "npm run delete:docs && npm run build:href && npm run copy:dist"
   },
   "repository": {
     "type": "git",
